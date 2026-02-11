@@ -3,19 +3,6 @@ import mongoose from 'mongoose';
 
 const router = express.Router();
 
-// ENDPOINT DE DEBUG TEMPORAL
-router.post('/debug', (req, res) => {
-    res.json({
-        body: req.body,
-        headers: req.headers,
-        contentType: req.get('Content-Type')
-    });
-});
-
-
-
-
-
 // 3. MODELO (El molde de los datos)
 const userSchema = new mongoose.Schema({
     name: String,
