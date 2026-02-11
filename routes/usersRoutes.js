@@ -39,7 +39,6 @@ router.get('/:id', async (req, res) => {
 // RUTA POST: Para crear un nuevo usuario
 router.post('/', async (req, res) => {
     try {
-        console.log(' Body recibido:', req.body); // ← AGREGA ESTA LÍNEA
         const { name, email, age } = req.body;
 
         const nuevoUsuario = new user({
