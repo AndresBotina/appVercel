@@ -10,9 +10,9 @@ app.use(express.json()); // Crucial: Permite que Express entienda JSON
 
 // CONEXION A LA BASE DE DATOS
 // Aquí usamos una variable de entorno o un link local por defecto
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://db_andres:123456789*@cluster0.ng8b8ix.mongodb.net/app_usuarios';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:3000/usuarios';
 
-mongoose.connect(MONGO_URI)
+await mongoose.connect(MONGO_URI)
     .then(() => console.log("Conectado a MongoDB"))
     .catch(err => console.error("Error de conexion", err));
 

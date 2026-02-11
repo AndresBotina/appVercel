@@ -5,8 +5,8 @@ const router = express.Router();
 
 // 3. MODELO (El molde de los datos)
 const userSchema = new mongoose.Schema({
-    nombre: String,
-    correo: String,
+    name: String,
+    email: String,
     age: Number
 });
 const user = mongoose.model('user', userSchema);
@@ -39,11 +39,12 @@ router.get('/:id', async (req, res) => {
 // RUTA POST: Para crear un nuevo usuario
 router.post('/', async (req, res) => {
     try {
-        const { nombre, correo, age } = req.body;
+        console.log(' Body recibido:', req.body); // ← AGREGA ESTA LÍNEA
+        const { name, email, age } = req.body;
 
         const nuevoUsuario = new user({
-            nombre,
-            correo,
+            name,
+            email,
             age
         });
 
@@ -57,11 +58,11 @@ router.post('/', async (req, res) => {
 // RUTA PUT: Actualizar un usuario completo
 router.put('/:id', async (req, res) => {
     try {
-        const { nombre, correo, age } = req.body;
+        const { name, email, age } = req.body;
         
         const usuarioActualizado = await user.findByIdAndUpdate(
             req.params.id,
-            { nombre, correo, age },
+            { name, email, age },
             { new: true }
         );
 
